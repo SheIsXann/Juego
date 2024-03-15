@@ -1,4 +1,4 @@
-let numeroSecreto = generarNumeroSecreto();
+let numeroSecreto = 0;
 let intentos = 0;
 let listaNumerosSorteados = [];
 let numeroMaximo = 10;
@@ -38,23 +38,21 @@ function generarNumeroSecreto() {
     //let numeroGenerado = Math.floor(Math.random()*10)+1;
     //para delimitar el numero se agrega una variable con el numero maximo y se pone la variable junto con la formula
     let numeroGenerado = Math.floor(Math.random()*numeroMaximo)+1;
-    console.log(listaNumerosSorteados);
     console.log(numeroGenerado);
+    console.log(listaNumerosSorteados);
+    //su el numero generado esta incluido en la lista
     //si ya sorteamos todos los numeros
-    if (listaNumerosSorteados.length == numeroMaximo) {
+    if (listaNumerosSorteados.length == numeroMaximo){
         asignarTextoElemento('p','ya se sortearon todos los numeros posibles');
     } else {
-            //si el numero generado esta en la lista, hacemos una condicion con if o else
-    if (listaNumerosSorteados.includes(numeroGenerado)) {
-        return generarNumeroSecreto();
-    } else {
-        listaNumerosSorteados.push(numeroGenerado);
-        return numeroGenerado;
+        if (listaNumerosSorteados.incluidos(numeroGenerado)) {
+            return generarNumeroSecreto();
+        } else {
+            listaNumerosSorteados.push(numeroGenerado);
+            return numeroGenerado;
+        }
     }
     }
-
-
-}
 
 function condicionesIniciales() {
     asignarTextoElemento('h1','Juego del número secreto!');
